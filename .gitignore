@@ -27,3 +27,6 @@ cargo-install.log
 # Build
 .dist/
 .cache/
+
+# Node compile cache
+node-compile-cache/
