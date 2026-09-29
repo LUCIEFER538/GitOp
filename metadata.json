@@ -1,6 +1,0 @@
-{
-  "name": "OPEBAT - AI Developer Suite & GitHub Workstation",
-  "description": "منصة OPEBAT المتطورة: ترسانة الذكاء الاصطناعي، استوديو توليد الصور والأغاني، تحليل البيانات الذكي، مستكشف مستودعات جيثب وملفات الأكواد، ولوحة تحكم متكاملة للمطورين.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
