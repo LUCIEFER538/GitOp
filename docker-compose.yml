@@ -1,0 +1,44 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: gitop_postgres
+    environment:
+      POSTGRES_USER: gitop
+      POSTGRES_PASSWORD: gitop
+      POSTGRES_DB: gitop
+    ports:
+      - "5432:5432"
+    volumes:
+      - gitop_postgres_data:/var/lib/postgresql/data
+      - ./backend/migrations:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gitop"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  gitea:
+    image: gitea/gitea:1.22
+    container_name: gitop_gitea
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - GITEA__database__DB_TYPE=postgres
+      - GITEA__database__HOST=postgres:5432
+      - GITEA__database__NAME=gitea
+      - GITEA__database__USER=gitea
+      - GITEA__database__PASSWD=gitea123
+    ports:
+      - "3000:3000"
+      - "2222:22"
+    volumes:
+      - gitop_gitea_data:/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  gitop_postgres_data:
+  gitop_gitea_data:

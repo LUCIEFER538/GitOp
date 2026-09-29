@@ -1,8 +1,29 @@
+# Dependencies
 node_modules/
-build/
-dist/
-coverage/
-.DS_Store
+/dist/
+/build/
+
+# Rust
+/backend/target/
+Cargo.lock
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
 *.log
-.env*
-!.env.example
+npm-debug.log*
+cargo-install.log
+
+# OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build
+.dist/
+.cache/
